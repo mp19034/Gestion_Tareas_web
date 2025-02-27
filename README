@@ -1,0 +1,33 @@
+#primero cree un entorno virtual comando: 
+python -m venv env
+
+#lo active
+env\Scripts\activate
+
+#luego installe django
+pip install django
+
+#luego ejecute este comando me ayudo a iniciar las configuraciones de django los archivos principales
+django-admin startproject config
+
+#ingresamos ala carpeta config
+cd config
+
+#creamos la aplicacion tareas y esta nos genera una nueva estructura
+python manage.py startapp tareas
+
+#luego nos vamos a 
+config/settings.py
+
+#y agreamos en el siguiente apartado el nombre de nuestra aplicacion:
+INSTALLED_APPS = [
+    ...
+    'tareas',
+]
+
+#corremos el servidor:
+python manage.py runserver
+
+#luego cree y migre la base de datos
+python manage.py makemigrations
+python manage.py migrate

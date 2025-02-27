@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Tarea</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container"> <!-- principal -->
+        <h1>Agregar Tarea</h1>
+        <form method="post">
+            {% csrf_token %} {# Token de seguridad de Django para proteger contra ataques CSRF #}
+            <div class="form-group">
+                <label for="titulo">Título:</label> 
+                <!-- Campo de entrada de texto para el título, obligatorio -->
+                <input type="text" name="titulo" class="input-text" required class="input-field"><br>
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <!-- Campo de entrada de texto para la descripcion, no es obligatorio -->
+                <textarea name="descripcion" class="input-field"></textarea><br>
+            </div>
+            <!-- bottom de guardado o enviar y resetea-->
+            <button type="submit" class="submit-button">Agregar</button>
+        </form>
+        <a class="back-button" href="{% url 'lista_tareas' %}">🔙 Volver</a>
+    </div>
+</body>
+</html>

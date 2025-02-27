@@ -1,0 +1,27 @@
+# ⚠️ Ignorar el entorno virtual
+env/
+
+# ⚠️ Ignorar base de datos local (si usas SQLite)
+db.sqlite3
+
+# ⚠️ Ignorar migraciones compiladas y caché de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ⚠️ Ignorar archivos de configuración de entornos (pueden contener credenciales)
+.env
+*.env
+
+# ⚠️ Ignorar archivos de dependencias locales
+.vscode/
+.idea/
+.DS_Store
+
+# ⚠️ Ignorar archivos estáticos generados (si usas collectstatic en producción)
+staticfiles/
+static/
+
+# ⚠️ Ignorar archivos de logs
+*.log

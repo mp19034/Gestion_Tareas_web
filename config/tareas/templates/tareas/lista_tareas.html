@@ -1,0 +1,36 @@
+{% load static %} {#hoja de estilo CSS ojo ver si esta static en settings activo#}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container"> <!-- contenedor principal -->
+
+        <h1>Lista de Tareas</h1> <!-- Encabezado principal -->
+
+        <ul class="task-list"> <!-- Lista de tareas get-->
+            {% for tarea in tareas %}
+
+                <li class="task-item">
+                    <span class="task-title">{{ tarea.titulo }} - {{ tarea.descripcion }}</span> <!-- verifica si la tarea esta completada -->
+                    {% if tarea.completada %}
+                        <span class="completed">✅ Completada</span>
+
+                    {% else %} <!-- Si no la aparece como a marcar para completar -->
+                        <a class="mark-completed" href="{% url 'marcar_completada' tarea.id %}">Marcar como completada</a>
+
+                    {% endif %} <!-- link para elimianr -->
+                    <a class="delete-task" href="{% url 'eliminar_tarea' tarea.id %}">❌ Eliminar</a>
+                </li>
+            {% endfor %} {# Fin del bucle que recorre las tareas #}
+        </ul>
+        <!-- Enlace para agregar una nueva tarea -->
+        <a class="add-task" href="{% url 'agregar_tarea' %}">➕ Agregar Nueva Tarea</a>
+    </div>
+</body>
+</html>
